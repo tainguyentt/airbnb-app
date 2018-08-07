@@ -3,15 +3,32 @@ import { KeyboardAvoidingView, StyleSheet, Text, View } from 'react-native';
 import { ScrollView } from '../../node_modules/react-native-gesture-handler';
 import NextArrowButton from '../components/buttons/NextArrowButton';
 import InputField from '../components/forms/InputField';
+import Notification from "../components/Notification";
 import colors from '../styles/colors';
 
 export default class Login extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      formValid: false
+    };
+  };
+
   handleNextButton() {
     alert("Next Button");
-  }
+  };
+
+  handleCloseNotification = () => {
+    this.setState({
+      formValid: true
+    });
+  };
+
   render() {
+    const showNotification = !this.state.formValid;
+    const backgroundColor = this.state.formValid ? 'orange' : 'red';
     return (
-      <KeyboardAvoidingView behavior="padding" style={styles.wrapper}>
+      <KeyboardAvoidingView behavior="padding" style={[{ backgroundColor }, styles.wrapper]}>
         <View style={styles.scrollWrapper}>
           <ScrollView style={styles.scrollView}>
             <Text style={styles.loginHeader}>Login</Text>
@@ -27,6 +44,14 @@ export default class Login extends Component {
           <View style={styles.button}>
             <NextArrowButton handleOnPress={this.handleNextButton} />
           </View>
+          <View style={styles.notificationWrapper}>
+            <Notification
+              showNotification={showNotification}
+              handleOnClose={this.handleCloseNotification}
+              type="Error"
+              message="Invalid input"
+            />
+          </View>
         </View>
       </KeyboardAvoidingView>
     );
@@ -36,7 +61,6 @@ export default class Login extends Component {
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
-    backgroundColor: colors.orangebnb
   },
   scrollWrapper: {
     marginTop: 70,
@@ -58,5 +82,8 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end',
     right: 20,
     bottom: 20
+  },
+  notificationWrapper: {
+    display: 'flex',
   }
 });

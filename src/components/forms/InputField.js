@@ -11,6 +11,7 @@ export default class InputField extends Component {
     };
   }
 
+  //bind context this to the function
   togglePassword = () => {
     this.setState({ secureText: !this.state.secureText });
   }
