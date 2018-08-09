@@ -4,10 +4,12 @@ import { addNavigationHelpers, StackNavigator } from 'react-navigation';
 import { connect } from 'react-redux';
 import LoggedOut from '../screens/LoggedOut';
 import LogIn from '../screens/Login';
+import LoggedIn from '../screens/LoggedIn';
 
 export const AppNavigator = StackNavigator({
   LogIn: { screen: LogIn },
   LoggedOut: { screen: LoggedOut },
+  LoggedIn: { screen: LoggedIn },
 });
 
 const AppWithNavigationState = ({ dispatch, nav, listener }) => (

@@ -43,11 +43,15 @@ class Login extends Component {
   handleNextButton = () => {
     this.setState({ loadingVisible: true });
     const { emailAddress, password } = this.state;
+    const { navigate } = this.props.navigation;
     setTimeout(() => {
       formValid = this.props.logIn(emailAddress, password);
       this.setState({ formValid: formValid });
+      if (formValid) {
+        navigate('LoggedIn');
+      }
       this.setState({ loadingVisible: false });
-    }, 2000);
+    }, 1000);
   };
 
   isNextButtonDisabled = () => {
