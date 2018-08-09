@@ -10,8 +10,14 @@ import Notification from "../components/Notification";
 import { ActionCreators } from '../redux/actions';
 import colors from '../styles/colors';
 import { styles } from './styles/Login';
+import { transparentHeaderStyle } from '../styles/navigation';
 
 class Login extends Component {
+  static navigationOptions = ({ navigation }) => ({
+    headerTintColor: 'white',
+    headerStyle: transparentHeaderStyle
+  });
+
   constructor(props) {
     super(props)
     this.state = {
@@ -70,7 +76,7 @@ class Login extends Component {
               inputType="password"
               onChangeText={this.handlePasswordChange} />
           </ScrollView>
-          <View style={styles.nextButton}>
+          <View style={styles.nextButtonWrapper}>
             <NextArrowButton disabled={this.isNextButtonDisabled()} handleOnPress={this.handleNextButton} />
           </View>
           <View style={styles.notificationWrapper}>

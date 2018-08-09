@@ -2,6 +2,7 @@ import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
   wrapper: {
+    display: 'flex',
     flex: 1,
   },
   scrollWrapper: {
@@ -20,14 +21,13 @@ export const styles = StyleSheet.create({
     fontWeight: '300',
     marginBottom: 30,
   },
-  nextButton: {
+  nextButtonWrapper: {
     alignItems: 'flex-end',
     right: 20,
     bottom: 20
   },
   notificationWrapper: {
     position: 'absolute',
-    backgroundColor: 'yellow',
     bottom: 0,
     right: 0,
     left: 0
