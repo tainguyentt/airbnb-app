@@ -1,12 +1,15 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import LoggedOut from './src/screens/LoggedOut';
+import React, { Component } from 'react';
+import { StyleSheet } from 'react-native';
+import { Provider } from 'react-redux';
+import store from './src/redux/store';
 import Login from './src/screens/Login';
 
-export default class App extends React.Component {
+export default class App extends Component {
   render() {
     return (
-      <Login />
+      <Provider store={store}>
+        <Login />
+      </Provider>
     );
   }
 }
