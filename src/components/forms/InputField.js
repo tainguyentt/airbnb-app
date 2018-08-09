@@ -17,7 +17,7 @@ export default class InputField extends Component {
   }
 
   render() {
-    const { labelText, inputType } = this.props;
+    const { labelText, inputType, onChangeText } = this.props;
     const secureText = this.state.secureText;
     return (
       <View style={styles.wrapper}>
@@ -30,7 +30,8 @@ export default class InputField extends Component {
         <TextInput
           autoCorrect={false}
           style={styles.inputField}
-          secureTextEntry={secureText} />
+          secureTextEntry={secureText}
+          onChangeText={onChangeText} />
       </View>
     );
   }
@@ -39,6 +40,7 @@ export default class InputField extends Component {
 InputField.propTypes = {
   labelText: PropTypes.string.isRequired,
   inputType: PropTypes.string.isRequired,
+  onChange: PropTypes.func
 }
 
 const styles = StyleSheet.create({

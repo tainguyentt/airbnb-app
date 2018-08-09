@@ -1,13 +1,13 @@
+import Icon from '@expo/vector-icons/FontAwesome';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Animated } from 'react-native';
-import Icon from '@expo/vector-icons/FontAwesome'
+import { Animated, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 export default class Notification extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      positionValue: new Animated.Value(60)
+      positionValue: new Animated.Value(-60)
     };
   };
 
@@ -27,9 +27,9 @@ export default class Notification extends Component {
   render() {
     const { showNotification, type, message } = this.props;
     const { positionValue } = this.state;
-    showNotification ? this.animateNotification(0) : this.animateNotification(60);
+    showNotification ? this.animateNotification(0) : this.animateNotification(-60);
     return (
-      <Animated.View style={[{ transform: [{ translateY: positionValue }] }, styles.wrapper]}>
+      <Animated.View style={[{ marginBottom: positionValue }, styles.wrapper]}>
         <View style={styles.errorContent}>
           <Text style={styles.errorType}> {type} </Text>
           <Text style={styles.errorMessage}> {message} </Text>
@@ -52,7 +52,8 @@ Notification.propTypes = {
 const styles = StyleSheet.create({
   wrapper: {
     backgroundColor: 'white',
-    padding: 10,
+    width: '100%',
+    padding: 20,
   },
   errorContent: {
     flexDirection: 'row',
@@ -66,7 +67,8 @@ const styles = StyleSheet.create({
   },
   closeButton: {
     position: 'absolute',
-    top: 10,
-    right: 10
+    padding: 20,
+    top: 0,
+    right: 0,
   }
 });
